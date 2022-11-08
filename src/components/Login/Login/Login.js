@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import loginImage from '../../../assets/login.svg';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
@@ -7,6 +7,9 @@ import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 const Login = () => {
     const { signIn, googleProviderLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
 
     // signIn with email and password
     const handleLogIn = (e) => {
@@ -44,6 +47,7 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 toast.success('Successfully Login')
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 console.error(error)
@@ -59,6 +63,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 toast.success('successfully login', { autoClose: 500 })
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.error(error)

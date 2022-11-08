@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import companyLogo from '../../../assets/logo.png';
+import { FaUserCircle } from 'react-icons/fa';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Header = () => {
@@ -46,16 +47,24 @@ const Header = () => {
                                 Home
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                to="/"
-                                aria-label="Review"
-                                title="Review"
-                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                            >
-                                Review
-                            </Link>
-                        </li>
+                        {
+                            user?.uid ?
+                                <>
+                                    <li>
+                                        <Link
+                                            to="/review"
+                                            aria-label="Review"
+                                            title="Review"
+                                            className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                        >
+                                            Reviews
+                                        </Link>
+                                    </li>
+                                </>
+                                :
+                                <>
+                                </>
+                        }
                         <li>
                             <Link
                                 to="/blog"
@@ -79,6 +88,35 @@ const Header = () => {
                         {
                             user?.uid ?
                                 <>
+                                    <>
+                                        <li>
+                                            <Link
+                                                to="/admin"
+                                                aria-label="Admin Dashboard"
+                                                title="Admin Dashboard"
+                                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                            >
+                                                Admin
+                                            </Link>
+                                        </li>
+                                    </>
+                                    <>
+                                        <li>
+                                            {user?.photoURL ?
+                                                <div className='flex items-center'>
+                                                    <p className='text-gray-100 font-medium'>{user.displayName}</p>
+                                                    <img
+                                                        className='rounded-full'
+                                                        referrerPolicy='no-referrer'
+                                                        title={user.displayName}
+                                                        src={user?.photoURL}
+                                                        style={{ height: '40px', marginLeft: '10px', color: '#ffffff' }}
+                                                    ></img>
+                                                </div>
+                                                :
+                                                <FaUserCircle style={{ fontSize: '30px' }} />}
+                                        </li>
+                                    </>
                                     <li>
                                         <Link
                                             to="/login"
@@ -136,7 +174,7 @@ const Header = () => {
                                                 to="/"
                                                 aria-label="Company"
                                                 title="Company"
-                                                className="inline-flex items-center bg-indigo-600 p-2"
+                                                className="inline-flex items-center bg-indigo-600 p-2 rounded-sm"
                                             >
                                                 <img className='w-1/12' src={companyLogo} alt="Going-Global" />
                                                 <span className="ml-2 text-3xl font-bold tracking-wide text-gray-100 uppercase">
@@ -172,22 +210,30 @@ const Header = () => {
                                                     Home
                                                 </Link>
                                             </li>
-                                            <li>
-                                                <Link
-                                                    href="/review"
-                                                    aria-label="Review"
-                                                    title="Review"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                >
-                                                    Review
-                                                </Link>
-                                            </li>
+                                            {
+                                                user?.uid ?
+                                                    <>
+                                                        <li>
+                                                            <Link
+                                                                to="/review"
+                                                                aria-label="Review"
+                                                                title="Review"
+                                                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                            >
+                                                                Reviews
+                                                            </Link>
+                                                        </li>
+                                                    </>
+                                                    :
+                                                    <>
+                                                    </>
+                                            }
                                             <li>
                                                 <Link
                                                     to="/blog"
                                                     aria-label="blog"
                                                     title="blog"
-                                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
                                                     Blog
                                                 </Link>
@@ -197,7 +243,7 @@ const Header = () => {
                                                     to="/about"
                                                     aria-label="About us"
                                                     title="About us"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400"
+                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
                                                     About
                                                 </Link>
@@ -205,10 +251,39 @@ const Header = () => {
                                             {
                                                 user?.uid ?
                                                     <>
+                                                        <>
+                                                            <li>
+                                                                <Link
+                                                                    to="/admin"
+                                                                    aria-label="Admin Dashboard"
+                                                                    title="Admin Dashboard"
+                                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                                >
+                                                                    Admin
+                                                                </Link>
+                                                            </li>
+                                                        </>
+                                                        <>
+                                                            <li>
+                                                                {user?.photoURL ?
+                                                                    <div className='flex items-center'>
+                                                                        <p className='text-gray-700 font-medium'>{user.displayName}</p>
+                                                                        <img
+                                                                            className='rounded-full'
+                                                                            referrerPolicy='no-referrer'
+                                                                            title={user.displayName}
+                                                                            src={user?.photoURL}
+                                                                            style={{ height: '40px', marginLeft: '10px', color: '#ffffff' }}
+                                                                        ></img>
+                                                                    </div>
+                                                                    :
+                                                                    <FaUserCircle style={{ fontSize: '30px' }} />}
+                                                            </li>
+                                                        </>
                                                         <li>
                                                             <Link
                                                                 to="/login"
-                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-700 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                                                                 aria-label="Logout"
                                                                 title="Logout"
                                                             >
@@ -221,7 +296,7 @@ const Header = () => {
                                                         <li>
                                                             <Link
                                                                 to="/login"
-                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-700 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                                                                 aria-label="Sign In"
                                                                 title="Sign In"
                                                             >

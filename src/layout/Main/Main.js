@@ -6,7 +6,7 @@ import Header from '../../components/Shared/Header/Header';
 const Main = () => {
     return (
         <div>
-            <div className='dark:bg-indigo-800'>
+            <div className='bg-indigo-700'>
                 <div className='max-w-screen-2xl mx-auto'>
                     <Header></Header>
                 </div>
@@ -14,8 +14,8 @@ const Main = () => {
             <div className='max-w-screen-2xl mx-auto mb-12'>
                 <Outlet></Outlet>
             </div>
-            <div className='dark:bg-indigo-800'>
-                <div className='max-w-screen-2xl mx-auto dark:bg-indigo-800  py-32'>
+            <div className='bg-indigo-700'>
+                <div className='max-w-screen-2xl mx-auto bg-indigo-700  py-16'>
                     <Footer></Footer>
                 </div>
             </div>

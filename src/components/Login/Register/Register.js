@@ -28,11 +28,8 @@ const Register = () => {
                             <div className="space-y-1 text-sm">
                                 <label htmlFor="password" className="block dark:text-gray-400">Password</label>
                                 <input type="password" name="password" id="password" placeholder="Enter Your Password" className="w-full px-4 py-3 rounded-md border-gray-500 dark:bg-gray-800 dark:text-gray-100 focus:border-violet-400" />
-                                <div className="flex justify-end text-xs dark:text-gray-400">
-                                    <Link rel="noopener noreferrer" to="/">Forgot Password?</Link>
-                                </div>
                             </div>
-                            <button className="block w-full p-3 text-center rounded-sm dark:text-gray-200 bg-indigo-600 hover:bg-indigo-500">Sign in</button>
+                            <button className="block w-full p-3 text-center rounded-sm dark:text-gray-200 bg-indigo-600 hover:bg-indigo-500">Register</button>
                         </form>
                         <div className="flex items-center pt-4 space-x-1">
                             <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>

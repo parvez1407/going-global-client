@@ -41,14 +41,14 @@ const Header = () => {
                             </a>
                         </li>
                         <li>
-                            <a
-                                href="/"
-                                aria-label="Product pricing"
-                                title="Product pricing"
+                            <Link
+                                to="/blog"
+                                aria-label="blog"
+                                title="blog"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
-                                Pricing
-                            </a>
+                                Blog
+                            </Link>
                         </li>
                         <li>
                             <Link
@@ -149,14 +149,14 @@ const Header = () => {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a
-                                                    href="/"
-                                                    aria-label="Product pricing"
-                                                    title="Product pricing"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                <Link
+                                                    to="/blog"
+                                                    aria-label="blog"
+                                                    title="blog"
+                                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                                                 >
-                                                    Pricing
-                                                </a>
+                                                    Blog
+                                                </Link>
                                             </li>
                                             <li>
                                                 <Link

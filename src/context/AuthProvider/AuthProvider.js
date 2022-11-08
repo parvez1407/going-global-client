@@ -44,6 +44,7 @@ const AuthProvider = ({ children }) => {
         updateUserProfile,
         logOut,
         signIn,
+        googleProviderLogin,
     }
 
     useEffect(() => {

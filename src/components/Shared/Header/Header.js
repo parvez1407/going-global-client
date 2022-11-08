@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import companyLogo from '../../../assets/logo.png';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.success('Successfully Logout')
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                toast.error(errorMessage)
+            })
+    }
+
+
     return (
         <div className="bg-indigo-700">
             <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
@@ -31,14 +47,14 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <a
-                                href="/"
-                                aria-label="Our product"
-                                title="Our product"
+                            <Link
+                                to="/"
+                                aria-label="Review"
+                                title="Review"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
-                                Features
-                            </a>
+                                Review
+                            </Link>
                         </li>
                         <li>
                             <Link
@@ -60,16 +76,34 @@ const Header = () => {
                                 About
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                to="/login"
-                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                aria-label="Sign In"
-                                title="Sign In"
-                            >
-                                Sign In
-                            </Link>
-                        </li>
+                        {
+                            user?.uid ?
+                                <>
+                                    <li>
+                                        <Link
+                                            to="/login"
+                                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                            aria-label="Logout"
+                                            title="Logout"
+                                        >
+                                            <button onClick={handleLogOut}>Logout</button>
+                                        </Link>
+                                    </li>
+                                </>
+                                :
+                                <>
+                                    <li>
+                                        <Link
+                                            to="/login"
+                                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                            aria-label="Sign In"
+                                            title="Sign In"
+                                        >
+                                            Login
+                                        </Link>
+                                    </li>
+                                </>
+                        }
                     </ul>
                     <div className="lg:hidden">
                         <button
@@ -129,24 +163,24 @@ const Header = () => {
                                     <nav>
                                         <ul className="space-y-4">
                                             <li>
-                                                <a
+                                                <Link
                                                     href="/"
-                                                    aria-label="Our product"
-                                                    title="Our product"
+                                                    aria-label="Home"
+                                                    title="Home"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
-                                                    Product
-                                                </a>
+                                                    Home
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a
-                                                    href="/"
-                                                    aria-label="Our product"
-                                                    title="Our product"
+                                                <Link
+                                                    href="/review"
+                                                    aria-label="Review"
+                                                    title="Review"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
-                                                    Features
-                                                </a>
+                                                    Review
+                                                </Link>
                                             </li>
                                             <li>
                                                 <Link
@@ -168,16 +202,34 @@ const Header = () => {
                                                     About
                                                 </Link>
                                             </li>
-                                            <li>
-                                                <Link
-                                                    to="/login"
-                                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide bg-indigo-600 text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                                    aria-label="Sign In"
-                                                    title="Sign In"
-                                                >
-                                                    Sign In
-                                                </Link>
-                                            </li>
+                                            {
+                                                user?.uid ?
+                                                    <>
+                                                        <li>
+                                                            <Link
+                                                                to="/login"
+                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                                aria-label="Logout"
+                                                                title="Logout"
+                                                            >
+                                                                <button onClick={handleLogOut}>Logout</button>
+                                                            </Link>
+                                                        </li>
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <li>
+                                                            <Link
+                                                                to="/login"
+                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                                aria-label="Sign In"
+                                                                title="Sign In"
+                                                            >
+                                                                Login
+                                                            </Link>
+                                                        </li>
+                                                    </>
+                                            }
                                         </ul>
                                     </nav>
                                 </div>

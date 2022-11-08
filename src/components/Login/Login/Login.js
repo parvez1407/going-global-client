@@ -1,8 +1,58 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import loginImage from '../../../assets/login.svg';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { signIn } = useContext(AuthContext);
+    const [error, setError] = useState('');
+
+    const handleLogIn = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        if (!/\S+@\S+\.\S+/.test(email)) {
+            setError('Please give a valid email')
+            return;
+        }
+        else {
+            setError('');
+        }
+        const password = form.password.value;
+        if (!/(?=.{8,})/.test(password)) {
+            setError('Password should be 8 characters');
+            return;
+        }
+        if (!/(?=.*[a-zA-Z])/.test(password)) {
+            setError('you Must give one uppercase');
+            return;
+        }
+        if (!/(?=.*[!#$@%^&*? "])/.test(password)) {
+            setError('You should provide one special character')
+            return;
+        }
+        else {
+            setError('');
+        }
+        console.log(email, password);
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+                toast.success('Successfully Login')
+            })
+            .catch((error) => {
+                console.error(error)
+                const errorMessage = error.message;
+                toast.error(errorMessage)
+            })
+    }
+
+
+
     return (
         <div className="sm:px-0 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
             <div className="flex flex-col items-center justify-between lg:flex-row">
@@ -12,7 +62,8 @@ const Login = () => {
                 <div className="lg:w-1/2">
                     <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100 mt-10">
                         <h1 className="text-3xl font-bold text-center">Login</h1>
-                        <form className="space-y-6 ng-untouched ng-pristine ng-valid">
+                        <p className='text-red-500 my-3 text-center'>{error}</p>
+                        <form onSubmit={handleLogIn} className="space-y-6 ng-untouched ng-pristine ng-valid">
                             <div className="space-y-1 text-sm">
                                 <label htmlFor="userEmail" className="block dark:text-gray-400">Email</label>
                                 <input type="email" name="email" id="userEmail" placeholder="Enter Your Email" className="w-full px-4 py-3 rounded-md border-gray-500 dark:bg-gray-800 dark:text-gray-100 focus:border-violet-400" />

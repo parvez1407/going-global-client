@@ -1,16 +1,11 @@
 import React from 'react';
-import AddServices from '../AddServices/AddServices';
-import Sidebar from '../Sidebar/Sidebar';
+import adminImage from '../../assets/admin.svg'
 
 const Admin = () => {
     return (
-        <div className='grid gap-6 grid-cols-1 lg:grid-cols-12'>
-            <div className='my-10 grid lg:col-span-2'>
-                <Sidebar></Sidebar>
-            </div>
-            <div className='my-10 grid lg:col-span-10'>
-                <AddServices></AddServices>
-            </div>
+        <div >
+            <h1 className='text-center font-bold text-4xl text-indigo-400'>Welcome to Admin Panel</h1>
+            <img src={adminImage} alt="Admin" className='mx-auto mt-5' />
         </div>
     );
 };

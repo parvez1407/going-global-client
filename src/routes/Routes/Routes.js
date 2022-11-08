@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddServices from "../../Admin/AddServices/AddServices";
 import Admin from "../../Admin/Admin/Admin";
 import About from "../../components/About/About";
 import Blog from "../../components/Blog/Blog";
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
             {
                 path: '/admin',
                 element: <Admin></Admin>
+            },
+            {
+                path: '/admin/addServices',
+                element: <AddServices></AddServices>
             }
         ]
     }

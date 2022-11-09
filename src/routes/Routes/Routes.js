@@ -11,6 +11,7 @@ import Register from "../../components/Login/Register/Register";
 import Reviews from "../../components/Reviews/Reviews";
 import Main from "../../layout/Main/Main";
 import Subsidiary from "../../layout/Subsidiary/Subsidiary";
+import ServiceDetails from "../../ServiceDetails/ServiceDetails";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +46,11 @@ export const router = createBrowserRouter([
             {
                 path: '/allServices',
                 element: <AllServices></AllServices>
+            },
+            {
+                path: '/allServices/:id',
+                element: <ServiceDetails></ServiceDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/allServices/${params.id}`)
             },
         ]
     },

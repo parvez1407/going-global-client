@@ -17,7 +17,7 @@ const AddServices = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    toast.success('Service Added Successfully')
+                    toast.success('Service Added Successfully', { autoClose: 500 })
                     e.target.reset()
                 }
             })

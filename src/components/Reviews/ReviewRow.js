@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const ReviewRow = ({ review }) => {
-    const { date, email, name, _id, phone, reviewDesc, service, serviceName, userRating } = review;
+const ReviewRow = ({ review, handleDelete }) => {
+    const { date, email, _id, phone, reviewDesc, service, serviceName, userRating } = review;
     const [reviewService, setReviewService] = useState({});
 
     useEffect(() => {
@@ -10,6 +10,7 @@ const ReviewRow = ({ review }) => {
             .then(res => res.json())
             .then(data => setReviewService(data))
     }, [service])
+
 
     return (
         <tr className="border-b border-opacity-20 dark:border-gray-700 dark:bg-gray-900 ">
@@ -41,7 +42,7 @@ const ReviewRow = ({ review }) => {
                 <Link>Edit</Link>
             </td>
             <td className="p-3 text-right">
-                <button className='px-3 py-1 bg-indigo-500 rounded-sm text-gray-100'>Delete</button>
+                <button onClick={() => handleDelete(_id)} className='px-3 py-1 bg-indigo-500 rounded-sm text-gray-100'>Delete</button>
             </td>
         </tr>
     );

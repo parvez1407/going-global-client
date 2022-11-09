@@ -97,7 +97,7 @@ const Header = () => {
                                                     title="Admin Dashboard"
                                                     className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                                                 >
-                                                    Admin
+                                                    Add Service
                                                 </Link>
                                             </li>
                                         </>
@@ -112,6 +112,7 @@ const Header = () => {
                                                             title={user.displayName}
                                                             src={user?.photoURL}
                                                             style={{ height: '40px', marginLeft: '10px', color: '#ffffff' }}
+                                                            alt={user.displayName}
                                                         ></img>
                                                     </div>
                                                     :
@@ -260,7 +261,7 @@ const Header = () => {
                                                                         title="Admin Dashboard"
                                                                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                                     >
-                                                                        Admin
+                                                                        Add Service
                                                                     </Link>
                                                                 </li>
                                                             </>
@@ -275,6 +276,7 @@ const Header = () => {
                                                                                 title={user.displayName}
                                                                                 src={user?.photoURL}
                                                                                 style={{ height: '40px', marginLeft: '10px', color: '#ffffff' }}
+                                                                                alt={user.displayName}
                                                                             ></img>
                                                                         </div>
                                                                         :

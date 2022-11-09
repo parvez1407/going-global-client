@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import ReviewRow from './ReviewRow';
 
 const Reviews = () => {
     const { user } = useContext(AuthContext);
-    const [reviews, setReviews] = useState({})
+    const [reviews, setReviews] = useState([])
     console.log(reviews)
 
     useEffect(() => {
@@ -13,6 +14,24 @@ const Reviews = () => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [user?.email])
+
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure, you want to Delete your Review?')
+        if (proceed) {
+            fetch(`http://localhost:5000/reviews/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.deletedCount > 0) {
+                        toast.success('Data Successfully Deleted', { autoClose: 500 })
+                        const remaining = reviews.filter(rev => rev._id !== id);
+                        setReviews(remaining);
+                    }
+                })
+        }
+    }
 
     return (
         <div>
@@ -46,6 +65,7 @@ const Reviews = () => {
                                 reviews?.map(review => <ReviewRow
                                     key={review._id}
                                     review={review}
+                                    handleDelete={handleDelete}
                                 ></ReviewRow>)
                             }
                         </tbody>

@@ -12,6 +12,7 @@ import Reviews from "../../components/Reviews/Reviews";
 import Main from "../../layout/Main/Main";
 import Subsidiary from "../../layout/Subsidiary/Subsidiary";
 import ServiceDetails from "../../ServiceDetails/ServiceDetails";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/review',
-                element: <Reviews></Reviews>
+                element: <PrivateRoute><Reviews></Reviews></PrivateRoute>
             },
             {
                 path: '/blog',
@@ -61,7 +62,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/admin',
-                element: <Admin></Admin>
+                element: <PrivateRoute><Admin></Admin></PrivateRoute>
             },
             {
                 path: '/admin/addServices',

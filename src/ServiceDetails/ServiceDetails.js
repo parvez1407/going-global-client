@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../context/AuthProvider/AuthProvider';
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
     const service = useLoaderData();
     const { cost, description, rating, serviceImg, serviceName, duration, _id } = service;
+
     const handleReview = event => {
         event.preventDefault();
         const form = event.target;
@@ -28,7 +30,23 @@ const ServiceDetails = () => {
             phone,
             date
         }
-        console.log(review);
+
+        fetch('http://localhost:5000/reviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('Thank you for your valuable feedback', { autoClose: 500 })
+                    event.target.reset()
+                }
+            })
+            .catch(err => console.error(err))
+
     }
 
     return (
@@ -60,7 +78,7 @@ const ServiceDetails = () => {
                     {
                         !user?.uid ?
                             <>
-                                <Link to='/login' className='text-xl font-semibold bg-slate-500 rounded-sm px-4 py-2'>Login</Link>
+                                <Link to='/login' className='text-xl font-semibold bg-gray-500 rounded-sm px-4 py-2 text-gray-100'>Login</Link>
                             </>
                             :
                             <>
@@ -93,7 +111,7 @@ const ServiceDetails = () => {
                         </div>
                         :
                         <>
-                            <h1 className='text-center'>Please Login to give review</h1>
+                            <h1 className='text-center font-bold text-indigo-500 text-3xl'>Please Login to give review</h1>
                         </>
                 }
             </div>

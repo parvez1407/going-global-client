@@ -8,7 +8,7 @@ const ExploreAllServices = () => {
     const [services, setServices] = useState();
     console.log(services);
     useEffect(() => {
-        fetch('http://localhost:5000/allServices')
+        fetch('https://going-global-server.vercel.app/allServices')
             .then(res => res.json())
             .then(data => {
                 setServices(data)

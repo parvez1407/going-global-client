@@ -54,7 +54,7 @@ const Login = () => {
                 form.reset();
                 toast.success('Successfully Login', { autoClose: 500 })
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://going-global-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

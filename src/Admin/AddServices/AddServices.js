@@ -7,7 +7,7 @@ const AddServices = () => {
         e.preventDefault();
         console.log(service);
 
-        fetch('http://localhost:5000/services', {
+        fetch('https://going-global-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

@@ -44,7 +44,7 @@ const Footer = () => {
                             title="Our address"
                             className="transition-colors duration-300 text-indigo-400 hover:text-indigo-200"
                         >
-                            312 Lovely Street, NY
+                            312/2, Gulshan-2, Dahaka, BD
                         </a>
                     </div>
                     <div className="flex">
@@ -75,12 +75,10 @@ const Footer = () => {
                     </a>
                     <div className="mt-6 lg:max-w-sm">
                         <p className="text-sm text-gray-200">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                            accusantium doloremque laudantium, totam rem aperiam.
+                            I am a unique Travel specialist and run a unique platform that combines travel consultancy, inbound and outbound tour operation, visa processing and insurance.
                         </p>
                         <p className="mt-4 text-sm text-gray-200">
-                            Eaque ipsa quae ab illo inventore veritatis et quasi architecto
-                            beatae vitae dicta sunt explicabo.
+                            I am  IATA TOAB ATAB approved travel Specialist who is also associates with booking and reservation of airlines tickets and hotel accommodation for any destination.
                         </p>
                     </div>
                 </div>
@@ -106,7 +104,7 @@ const Footer = () => {
                         <a
                             href="https://twitter.com/"
                             target='black'
-                            className="text-gray-200 hover:text-indigo-300 text-3xl transition-colors duration-300 hover:text-deep-purple-accent-400"
+                            className="text-indigo-200 hover:text-gray-200 text-3xl transition-colors duration-300 hover:text-deep-purple-accent-400"
                         >
                             <FaTwitterSquare />
                         </a>

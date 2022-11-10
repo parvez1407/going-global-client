@@ -13,8 +13,8 @@ const Growth = () => {
                         </svg>
                     </div>
                     <div className="flex flex-col justify-center align-middle">
-                        <p className="text-3xl font-semibold leading-none">200</p>
-                        <p className="capitalize">Orders</p>
+                        <p className="text-3xl font-semibold leading-none">975</p>
+                        <p className="capitalize">Services Taken</p>
                     </div>
                 </div>
                 <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-indigo-700 dark:text-gray-100">
@@ -27,7 +27,7 @@ const Growth = () => {
                         </svg>
                     </div>
                     <div className="flex flex-col justify-center align-middle">
-                        <p className="text-3xl font-semibold leading-none">7500</p>
+                        <p className="text-3xl font-semibold leading-none">2300</p>
                         <p className="capitalize">New customers</p>
                     </div>
                 </div>
@@ -54,8 +54,8 @@ const Growth = () => {
                         </svg>
                     </div>
                     <div className="flex flex-col justify-center align-middle">
-                        <p className="text-3xl font-semibold leading-none">17%</p>
-                        <p className="capitalize">Bounce rate</p>
+                        <p className="text-3xl font-semibold leading-none">98%</p>
+                        <p className="capitalize">Rating</p>
                     </div>
                 </div>
             </div>

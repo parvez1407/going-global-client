@@ -52,12 +52,12 @@ export const router = createBrowserRouter([
             {
                 path: '/allServices/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/allServices/${params.id}`)
+                loader: ({ params }) => fetch(`https://going-global-server.vercel.app/allServices/${params.id}`)
             },
             {
                 path: '/updateReviews/:id',
                 element: <UpdateReviews></UpdateReviews>,
-                loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`)
+                loader: ({ params }) => fetch(`https://going-global-server.vercel.app/reviews/${params.id}`)
             }
         ]
     },
@@ -72,7 +72,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/admin/addServices',
-                element: <AddServices></AddServices>
+                element: <PrivateRoute><AddServices></AddServices></PrivateRoute>
             }
         ]
     }

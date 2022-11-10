@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const About = () => {
     return (
@@ -14,14 +15,12 @@ const About = () => {
                             </span>
                         </h2>
                         <p className="text-base text-gray-500 md:text-lg">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                            quae. explicabo.
+                            I am a unique Travel specialist and run a unique platform that combines travel consultancy, inbound and outbound tour operation, visa processing and insurance.
                         </p>
                     </div>
                     <div>
-                        <a
-                            href="/"
+                        <Link
+                            to="/"
                             aria-label=""
                             className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
                         >
@@ -33,7 +32,7 @@ const About = () => {
                             >
                                 <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
                             </svg>
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className="flex items-center justify-center -mx-4 lg:pl-8">

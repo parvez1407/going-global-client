@@ -10,7 +10,7 @@ const Reviews = () => {
     console.log(reviews)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user.email}`, {
+        fetch(`https://going-global-server.vercel.app/reviews?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('going-global-token')}`
             }
@@ -27,7 +27,7 @@ const Reviews = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to Delete your Review?')
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://going-global-server.vercel.app/reviews/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('going-global-token')}`

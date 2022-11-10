@@ -7,6 +7,8 @@ import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 const Login = () => {
     const { signIn, googleProviderLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const [jwtToken, setJwtToken] = useState()
+    console.log(jwtToken);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
@@ -44,10 +46,28 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser);
                 form.reset();
-                toast.success('Successfully Login')
-                navigate(from, { replace: true })
+                toast.success('Successfully Login', { autoClose: 500 })
+                // get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        setJwtToken(data.token)
+                        localStorage.setItem('going-global-token', data.token);
+                        navigate(from, { replace: true })
+                    })
             })
             .catch((error) => {
                 console.error(error)
@@ -63,6 +83,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 toast.success('successfully login', { autoClose: 500 })
+                localStorage.setItem('going-global-token', jwtToken)
                 navigate(from, { replace: true })
             })
             .catch(error => {

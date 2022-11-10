@@ -12,7 +12,7 @@ const Header = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                toast.success('Successfully Logout')
+                toast.success('Successfully Logout', { autoClose: 500 })
             })
             .catch(error => {
                 const errorMessage = error.message;

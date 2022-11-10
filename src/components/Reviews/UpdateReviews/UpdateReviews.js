@@ -13,7 +13,8 @@ const UpdateReviews = () => {
         fetch(`http://localhost:5000/reviews/${storedReview._id}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('going-global-token')}`
             },
             body: JSON.stringify(review)
         })

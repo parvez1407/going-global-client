@@ -10,7 +10,8 @@ const AddServices = () => {
         fetch('http://localhost:5000/services', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('going-global-token')}`
             },
             body: JSON.stringify(service)
         })
@@ -44,6 +45,7 @@ const AddServices = () => {
                 <input onBlur={handleInputBlur} type="text" name="cost" id="" placeholder='Service Cost' className='w-full border px-3 py-3 rounded-md border-indigo-300 outline-indigo-600 mt-3' required />
                 <input onBlur={handleInputBlur} type="text" name="serviceImg" id="" placeholder='Image url' className='w-full border px-3 py-3 rounded-md border-indigo-300 outline-indigo-600 mt-3' required />
                 <input onBlur={handleInputBlur} type="text" name="duration" id="" placeholder='Trip Duration' className='w-full border px-3 py-3 rounded-md border-indigo-300 outline-indigo-600 mt-3' required />
+                <input onBlur={handleInputBlur} type="time" name="time" id="" placeholder='Trip Duration' className='w-full border px-3 py-3 rounded-md border-indigo-300 outline-indigo-600 mt-3' required />
                 <div className='flex justify-center mt-3'>
                     <button type='submit' className='w-1/3 px-5 py-3 bg-indigo-500 text-gray-100 rounded-md'>Add Service</button>
                 </div>

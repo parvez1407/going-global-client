@@ -39,7 +39,7 @@ const ReviewRow = ({ review, handleDelete }) => {
                 <p>{userRating}</p>
             </td>
             <td className="p-3 text-right">
-                <Link>Edit</Link>
+                <Link to={`/updateReviews/${_id}`}><button>Edit</button></Link>
             </td>
             <td className="p-3 text-right">
                 <button onClick={() => handleDelete(_id)} className='px-3 py-1 bg-indigo-500 rounded-sm text-gray-100'>Delete</button>

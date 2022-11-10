@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import ReviewRow from './ReviewRow';
 
 const Reviews = () => {
     const { user, logOut } = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
     console.log(reviews)
+    useTitle('Review')
 
     useEffect(() => {
         fetch(`https://going-global-server.vercel.app/reviews?email=${user.email}`, {

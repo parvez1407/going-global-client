@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import loginImage from '../../../assets/login.svg';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const Register = () => {
     const { createUser, updateUserProfile, googleProviderLogin } = useContext(AuthContext);
@@ -10,6 +11,7 @@ const Register = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
+    useTitle('Register')
 
     const handleSubmit = e => {
         e.preventDefault();

@@ -8,7 +8,7 @@ import useTitle from '../../../hooks/useTitle';
 const Login = () => {
     const { signIn, googleProviderLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
-    const [jwtToken, setJwtToken] = useState()
+    const [jwtToken, setJwtToken] = useState('')
     console.log(jwtToken);
     const navigate = useNavigate();
     const location = useLocation();
@@ -43,7 +43,7 @@ const Login = () => {
         else {
             setError('');
         }
-        console.log(email, password);
+        // console.log(email, password);
 
         signIn(email, password)
             .then(result => {
@@ -52,7 +52,7 @@ const Login = () => {
                 const currentUser = {
                     email: user.email
                 }
-                console.log(currentUser);
+                // console.log(currentUser);
                 form.reset();
                 toast.success('Successfully Login', { autoClose: 500 })
                 // get jwt token
@@ -83,10 +83,25 @@ const Login = () => {
         googleProviderLogin()
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                const curusr = {
+                    email: user.email
+                }
+                console.log(curusr);
                 toast.success('successfully login', { autoClose: 500 })
-                localStorage.setItem('going-global-token', jwtToken)
-                navigate(from, { replace: true })
+                fetch('https://going-global-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(curusr)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        setJwtToken(data.token)
+                        localStorage.setItem('going-global-token', data.token);
+                        navigate(from, { replace: true })
+                    })
             })
             .catch(error => {
                 console.error(error)

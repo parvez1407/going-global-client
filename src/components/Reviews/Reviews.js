@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
@@ -24,7 +23,7 @@ const Reviews = () => {
                 return res.json()
             })
             .then(data => setReviews(data))
-    }, [user?.email])
+    }, [user?.email, logOut])
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to Delete your Review?')

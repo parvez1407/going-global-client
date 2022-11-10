@@ -16,12 +16,11 @@ This Projects was created with the help of tailwind, mamba ui,kit wind, react-js
 
 ## Live Link
 
-Hosted in Firebase ->[Live Link](https://teachza-e0177.web.app/)
+Hosted in Firebase ->[Live Link](https://going-global-1eaa1.web.app/)
 
 ## Context API
 
-[Api Link]()
-[Api Link]()
+[Api Link](https://going-global-server.vercel.app/)
 
 ## Resources & Credits
 

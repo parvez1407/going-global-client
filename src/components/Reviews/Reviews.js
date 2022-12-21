@@ -55,7 +55,8 @@ const Reviews = () => {
                     <div>
                         <h2 className='text-center text-2xl font-bold text-indigo-500 my-5'>You Gave {reviews?.length} Review</h2>
                         <div>
-                            <div className="overflow-x-auto rounded-md">
+                            <div className="overflow-x-auto rounded-md" data-aos="fade-right"
+                                data-aos-duration="2000">
                                 <table className="min-w-full text-md">
                                     <colgroup>
                                         <col />

@@ -12,7 +12,7 @@ Going Global is an Bangladeshi travel consultancy farm founded by Mr. Nahid Parv
 6. User can register or login in the login and register sections.
 7. Visitor can toggle login and register option.
 
-This Projects was created with the help of tailwind, mamba ui,kit wind, react-js, react router, react icons, firebase, react photo view, react toast.
+This Projects was created with the help of tailwind, mamba ui,kit wind, react-js, react router, react icons, firebase, react photo view, react toast, aos.
 
 ## Live Link
 

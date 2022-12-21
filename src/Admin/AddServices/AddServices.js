@@ -35,7 +35,8 @@ const AddServices = () => {
     }
 
     return (
-        <div >
+        <div data-aos="zoom-in"
+            data-aos-duration="2000">
             <div className='text-center mb-5'>
                 <h3 className="text-gray-500 text-4xl font-bold">Add Services Information</h3>
             </div>

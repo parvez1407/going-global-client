@@ -6,7 +6,8 @@ const Blog = () => {
     useTitle('Blog')
     return (
         <div>
-            <div className="dark:bg-gray-100 dark:text-gray-100 my-5">
+            <div className="dark:bg-gray-100 dark:text-gray-100 my-5" data-aos="fade-right"
+                data-aos-duration="2000">
                 <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm dark:bg-gray-900">
                     <div className="flex items-center justify-between">
                         <span className="text-sm dark:text-gray-400">Nov 8, 2022</span>
@@ -27,7 +28,8 @@ const Blog = () => {
                     </div>
                 </div>
             </div>
-            <div className="dark:bg-gray-100 dark:text-gray-100 my-5">
+            <div className="dark:bg-gray-100 dark:text-gray-100 my-5" data-aos="fade-left"
+                data-aos-duration="2000">
                 <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm dark:bg-gray-700">
                     <div className="flex items-center justify-between">
                         <span className="text-sm dark:text-gray-400">Nov 8, 2022</span>
@@ -50,7 +52,8 @@ const Blog = () => {
                     </div>
                 </div>
             </div>
-            <div className="dark:bg-gray-100 dark:text-gray-100 my-5">
+            <div className="dark:bg-gray-100 dark:text-gray-100 my-5" data-aos="fade-right"
+                data-aos-duration="2000">
                 <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm dark:bg-gray-900">
                     <div className="flex items-center justify-between">
                         <span className="text-sm dark:text-gray-400">Nov 8, 2022</span>
@@ -71,7 +74,8 @@ const Blog = () => {
                     </div>
                 </div>
             </div>
-            <div className="dark:bg-gray-100 dark:text-gray-100 my-5">
+            <div className="dark:bg-gray-100 dark:text-gray-100 my-5" data-aos="fade-left"
+                data-aos-duration="2000">
                 <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm dark:bg-gray-700">
                     <div className="flex items-center justify-between">
                         <span className="text-sm dark:text-gray-400">Nov 8, 2022</span>
